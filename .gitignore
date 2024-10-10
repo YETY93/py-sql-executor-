@@ -5,6 +5,11 @@ __pycache__/
 
 # C extensions
 *.so
+# Archivo de la carpeta data
+data/
+
+# Archivo de la carpeta venv
+sql-venv/
 
 # Distribution / packaging
 .Python
