@@ -2,6 +2,7 @@ import os
 import pickle
 
 from src.models.configuracion import Configuracion
+from src.utils.utils import existe_ruta
 
 
 def crear_dirtectorio_base(path_directorio: str)-> bool:
@@ -16,7 +17,10 @@ def crear_dirtectorio_base(path_directorio: str)-> bool:
 
 def guardar_ambiente(path_directorio: str, nombre_archivo_ambiente: str, config: Configuracion) -> bool:
     ruta_archivo: str = os.path.join(path_directorio, nombre_archivo_ambiente)
+
     try:
+        if not existe_ruta(path_directorio):
+            crear_dirtectorio_base(path_directorio)
         with open(ruta_archivo, 'wb') as archivo:
             pickle.dump(config, archivo)
         ruta_absoluta = os.path.abspath(ruta_archivo)

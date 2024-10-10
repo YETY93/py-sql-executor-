@@ -32,7 +32,7 @@ def seleccionar_ambiente(ambientes: list)-> str:
 def seleccionar_ambiente_configurar_nuevo(ambientes_disponibles: list) -> str:
     print("Por favor selecciona ambiente:")
     ambientes_disponibles.append("Agregar nuevo")
-    for idx, opcion in enumerate(Ambientes.listar_nombres_ambiente()):
+    for idx, opcion in enumerate(ambientes_disponibles):
         print(f"{idx + 1}. {opcion}")
     
     while True:
