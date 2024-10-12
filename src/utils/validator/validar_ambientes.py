@@ -4,17 +4,14 @@ from src.comun.ambientes_enum import Ambientes
 
 
 def validar_local()-> bool:
-    print( utils.existe_archivo(constantes.path_ambientes + Ambientes.LOCAL.value))
     return utils.existe_archivo(constantes.path_ambientes + Ambientes.LOCAL.value)
 
 
 def validar_qa()-> bool:
-    print( utils.existe_archivo(constantes.path_ambientes + Ambientes.QA.value))
     return utils.existe_archivo(constantes.path_ambientes + Ambientes.QA.value)
 
     
 def validar_prod()-> bool:
-    print( utils.existe_archivo(constantes.path_ambientes + Ambientes.PROD.value))
     return utils.existe_archivo(constantes.path_ambientes + Ambientes.PROD.value)
     
 def configuracion_completa()-> list | None:
@@ -26,9 +23,9 @@ def ambientes_diponibles()-> list:
     ambientes: list = []
     if(validar_local()):
         ambientes.append(Ambientes.LOCAL.name)
-    elif(validar_qa()):
+    if(validar_qa()):
         ambientes.append(Ambientes.QA.name)
-    elif(validar_prod()):
+    if(validar_prod()):
         ambientes.append(Ambientes.PROD.name)
     return ambientes
 

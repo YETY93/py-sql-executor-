@@ -1,6 +1,7 @@
 from colorama import Fore, Style, init
 
 from src.comun.ambientes_enum import Ambientes
+from src.comun.otro_ambiente_enum import Otro_ambiente
 
 def mostrar_bienvenida():
     print(Fore.GREEN + "*" * 62)
@@ -29,19 +30,22 @@ def seleccionar_ambiente(ambientes: list)-> str:
             print("Entrada inválida. Por favor, ingresa un número.")
 
 
-def seleccionar_ambiente_configurar_nuevo(ambientes_disponibles: list) -> str:
+def seleccionar_ambiente_configurar_nuevo(ambientes_configurados: list) -> str:
     print("Por favor selecciona ambiente:")
-    ambientes_disponibles.append("Agregar nuevo")
-    for idx, opcion in enumerate(ambientes_disponibles):
+    ambientes_configurados.append(Otro_ambiente.NUEVO.value)
+    for idx, opcion in enumerate(ambientes_configurados):
         print(f"{idx + 1}. {opcion}")
     
     while True:
         try:
             seleccion = int(input("\nIntroduce el número de la opción: "))
-            if 1 <= seleccion <= len(Ambientes):
-                ambiente_seleccionado = list(Ambientes)[seleccion - 1]
-                print(f"\nHas seleccionado: {ambiente_seleccionado.name}")
-                return ambiente_seleccionado.name 
+            if 1 <= seleccion <= len(ambientes_configurados):
+                ambiente_seleccionado = ambientes_configurados[seleccion - 1]
+                if(ambiente_seleccionado == Otro_ambiente.NUEVO.value):
+                    pendientes: list = listar_ambientes_pendientes(Ambientes.listar_nombres_ambiente(), ambientes_configurados)
+                    return seleccionar_ambiente(pendientes)
+                print(f"\nHas seleccionado: {ambiente_seleccionado}")
+                return ambiente_seleccionado 
             else:
                 print("Selección no válida. Intenta de nuevo.")
         except ValueError:
@@ -67,3 +71,5 @@ def seleccionar_ambiente_configurar() -> str:
             print("Entrada inválida. Por favor, ingresa un número.")
 
 
+def listar_ambientes_pendientes(ambientes: list, ambientes_configurados: list) -> list:
+    return [ambiente for ambiente in ambientes if ambiente not in ambientes_configurados]
