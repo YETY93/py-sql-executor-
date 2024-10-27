@@ -3,7 +3,7 @@ import getpass
 from src.comun import constantes
 from src.comun.ambientes_enum import Ambientes
 from src.models.configuracion import Configuracion
-from src.utils.administrar_configuracion import guardar_ambiente  # Para ingresar contraseñas sin mostrarlas por consola
+from src.utils.administrar_configuracion import persistir_configuracion_ambiente  # Para ingresar contraseñas sin mostrarlas por consola
 
 def crear_configuracion_ambiente(tipo_ambiente: str)-> Configuracion:
     """
@@ -30,7 +30,7 @@ def crear_configuracion_ambiente(tipo_ambiente: str)-> Configuracion:
         if not valido:
             return crear_configuracion_ambiente(tipo_ambiente)
         else:
-            persistir_configuracion(tipo_ambiente, config)
+            persistir_configuracion_ambiente(tipo_ambiente, config)
             return config
     except ValueError as e:
         print(f"Error: {e}")
@@ -60,11 +60,4 @@ def mostrar_configuracion(config: Configuracion) -> bool:
         else:
             print("Opción inválida. Por favor seleccione 1 o 2.")
  
-def persistir_configuracion( ambiente: str, config: Configuracion):
-    ruta_configuraciones: str = constantes.path_ambientes
-    nombre_archivo: Enum = Ambientes.obtener_valor(ambiente) 
-    try:
-         guardar_ambiente(ruta_configuraciones, nombre_archivo.value, config)
-    except Exception as e:
-        print(f"Ocurrió un error inesperado: {e}")
-        return None
+

@@ -15,13 +15,16 @@ def main():
     ambientes:list = configuracion_completa()
     ambientes_configurados:list = ambientes_diponibles()
    
-    if(ambientes_configurados):
-        seleccionar_ambiente(ambientes)
+    if ambientes:
+        ambiente_seleccionado: str = seleccionar_ambiente(ambientes)
         # ejecutar ambiente
     else:
-        if(ambientes_configurados):
-            ambiente = seleccionar_ambiente_configurar_nuevo(ambientes_configurados)
-            crear_configuracion_ambiente(ambiente)
+        if ambientes_configurados:
+            ambiente: str = seleccionar_ambiente_configurar_nuevo(ambientes_configurados)
+            if ambiente not in ambientes_configurados:
+                crear_configuracion_ambiente(ambiente)
+
+            print("cargar ambiente")
         else:
             print("\n *** No hay ambientes configurados *** \n")
             ambiente: str = seleccionar_ambiente_configurar()

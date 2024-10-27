@@ -15,7 +15,7 @@ def seleccionar_ambiente(ambientes: list)-> str:
     if not (ambientes):
         print("No existen ambiente para seleccionar")
         return None    
-    print("Por favor selecciona un ambiente:")
+    print("Por favor selecciona un ambiente a ejecutar: ")
     for idx, opcion in enumerate(ambientes):
         print(f"{idx + 1}. {opcion}")
     while True:
