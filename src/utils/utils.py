@@ -35,4 +35,3 @@ def existe_archivo(ruta: str) -> bool:
         bool: True si el archivo existe, False en caso contrario.
     """
     return os.path.isfile(ruta)
-

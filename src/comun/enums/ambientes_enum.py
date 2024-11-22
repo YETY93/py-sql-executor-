@@ -1,10 +1,10 @@
 from enum import Enum
 
-class Ambientes(Enum):
+
+class Ambiente_enum(Enum):
     QA = "qa.pkl"
     LOCAL = "local.pkl"
     PROD = "produccion.pkl"
-
 
     @staticmethod
     def listar_nombres_ambiente() -> list:
@@ -14,8 +14,7 @@ class Ambientes(Enum):
         Returns:
             list: Una lista con los nombres de los ambientes.
         """
-        return [ambiente.name for ambiente in Ambientes]
-    
+        return [ambiente.name for ambiente in Ambiente_enum]
 
     @staticmethod
     def obtener_valor(enum_ambiente: str) -> Enum:
@@ -32,7 +31,7 @@ class Ambientes(Enum):
             ValueError: Si el nombre del ambiente no es válido.
         """
         try:
-            return getattr(Ambientes, enum_ambiente)
+            return getattr(Ambiente_enum, enum_ambiente)
         except AttributeError:
             raise ValueError(f"'{enum_ambiente}' no es un ambiente válido. "
-                             f"Ambientes disponibles: {Ambientes.listar_nombres_ambiente()}")
+                             f"Ambientes disponibles: {Ambiente_enum.listar_nombres_ambiente()}")

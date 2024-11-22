@@ -1,9 +1,6 @@
-from enum import Enum
 import getpass
-from src.comun import constantes
-from src.comun.ambientes_enum import Ambientes
-from src.models.configuracion import Configuracion
-from src.utils.administrar_configuracion import persistir_configuracion_ambiente  # Para ingresar contraseñas sin mostrarlas por consola
+from src.models.configuracion_model import Configuracion
+from src.config.propiedades_ambiente import persistir_configuracion_ambiente  # Para ingresar contraseñas sin mostrarlas por consola
 
 def crear_configuracion_ambiente(tipo_ambiente: str)-> Configuracion:
     """
