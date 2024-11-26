@@ -1,6 +1,10 @@
 import getpass
+
+from src.config.propiedades_ambiente import (
+    persistir_configuracion_ambiente,  # Para ingresar contraseñas sin mostrarlas por consola
+)
 from src.models.configuracion_model import Configuracion
-from src.config.propiedades_ambiente import persistir_configuracion_ambiente  # Para ingresar contraseñas sin mostrarlas por consola
+
 
 def crear_configuracion_ambiente(tipo_ambiente: str)-> Configuracion:
     """
@@ -42,19 +46,19 @@ def mostrar_configuracion(config: Configuracion) -> bool:
     print(f"Usuario: {config.user}")
     print(f"Host: {config.host}")
     print(f"Base de datos: {config.database}")
-    
+
     while True:
         print("\n¿La configuración del ambiente es correcta?")
         print("1. Sí")
         print("2. No")
-        
+
         opcion = input("Seleccione una opción (1 o 2): ").strip()
-        
+
         if opcion == "1":
             return True
         elif opcion == "2":
             return False
         else:
             print("Opción inválida. Por favor seleccione 1 o 2.")
- 
+
 

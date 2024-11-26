@@ -1,0 +1,35 @@
+[tool.ruff]
+# Reglas generales de Ruff
+line-length = 79
+target-version = "py310"
+
+# Selección de reglas
+select = [
+    "E",  # pycodestyle error
+    "F",  # Pyflakes
+    "W",  # pycodestyle warning
+    "C90",  # mccabe complexity
+    "I",  # isort
+]
+
+# Reglas a ignorar (opcional)
+ignore = []
+
+# Carpetas a ignorar
+exclude = [
+    "venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "data",
+    "sql",
+    "configScript",
+    "dist"
+]
+
+# Configuración de importaciones
+[tool.ruff.isort]
+force-single-line = false
+combine-as-imports = true
+split-on-trailing-comma = true
+lines-between-types = 1

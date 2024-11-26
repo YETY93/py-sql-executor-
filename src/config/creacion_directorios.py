@@ -1,6 +1,6 @@
 import os
 
-from src.comun.constantes import path_sql, path_config
+from src.comun.constantes import path_config, path_sql
 
 
 def crear_dirtectorios(path_directorio: str)-> bool:

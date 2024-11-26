@@ -1,6 +1,6 @@
-from src.utils import utils
 from src.comun import constantes
 from src.comun.enums.ambientes_enum import Ambiente_enum
+from src.utils import utils
 
 
 def validar_local()-> bool:
@@ -10,10 +10,10 @@ def validar_local()-> bool:
 def validar_qa()-> bool:
     return utils.existe_archivo(constantes.path_ambientes + Ambiente_enum.QA.value)
 
-    
+
 def validar_prod()-> bool:
     return utils.existe_archivo(constantes.path_ambientes + Ambiente_enum.PROD.value)
-    
+
 def configuracion_completa()-> list | None:
     if(validar_local() and validar_qa() and validar_prod() ):
         return [Ambiente_enum.LOCAL.name, Ambiente_enum.QA.name, Ambiente_enum.PROD.name]
