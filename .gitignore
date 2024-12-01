@@ -175,3 +175,6 @@ cython_debug/
 .idea/inspectionProfiles/profiles_settings.xml
 sql/configScripts.txt
 qodana.yaml
+sqlInicial
+configScript/configScript.csv
+sql/sqlInicial.sql

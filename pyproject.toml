@@ -12,8 +12,11 @@ select = [
     "I",  # isort
 ]
 
-# Reglas a ignorar (opcional)
-ignore = []
+# Añade esta línea para permitir que RUFF formatee el código
+fixable = ["ALL"]
+
+# Opcional: Ignora específicamente la regla E501 (línea demasiado larga)
+ignore = ["E501"]
 
 # Carpetas a ignorar
 exclude = [

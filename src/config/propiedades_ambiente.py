@@ -5,7 +5,7 @@ from enum import Enum
 
 from src.comun import constantes
 from src.comun.enums.ambientes_enum import Ambiente_enum
-from src.config.creacion_directorios import crear_dirtectorios
+from src.config.directorios.creacion_directorios import crear_dirtectorios
 from src.models.configuracion_model import Configuracion
 
 
@@ -35,7 +35,7 @@ def cargar_ambiente(path_directorio: str, nombre_archivo_ambiente: str) -> Confi
 
 
 def persistir_configuracion_ambiente(ambiente: str, config: Configuracion):
-    ruta_configuraciones: str = constantes.path_ambientes
+    ruta_configuraciones: str = constantes.PATH_AMBIENTES
     nombre_archivo: Enum = Ambiente_enum.obtener_valor(ambiente)
     try:
          guardar_ambiente(ruta_configuraciones, nombre_archivo.value, config)

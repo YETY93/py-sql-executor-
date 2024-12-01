@@ -35,7 +35,7 @@ def main():
             if ambiente not in ambientes_configurados:
                 crear_configuracion_ambiente(ambiente)
 
-            configuracion_cargada: Configuracion = propiedades_ambiente.cargar_ambiente(constantes.path_ambientes, ambiente)
+            configuracion_cargada: Configuracion = propiedades_ambiente.cargar_ambiente(constantes.PATH_AMBIENTES, ambiente)
             print(configuracion_cargada)
 
         else:

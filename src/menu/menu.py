@@ -73,4 +73,4 @@ def seleccionar_ambiente_configurar() -> str:
 
 
 def listar_ambientes_pendientes(ambientes: list, ambientes_configurados: list) -> list:
-    print("")
+    return [ambiente for ambiente in ambientes if ambiente not in ambientes_configurados]
